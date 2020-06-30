@@ -5,8 +5,10 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 
+// eslint-disable-next-line import/no-unresolved
 const csml = require('../native');
-const package = require('../package.json');
+const mod = require('../package.json');
+
 const app = express();
 
 app.use(morgan('tiny'));
@@ -19,9 +21,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 /**
  * Default route
  */
-app.get('/', (req, res) => {
-  return res.send(`Running CSML Server v${package.version}`);
-})
+app.get('/', (req, res) => res.send(`Running CSML Server v${mod.version}`));
 
 /**
  * Receive and handle incoming events
