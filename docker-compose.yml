@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  csml-engine:
+    image: clevy/csml-server
+    container_name: csml-server
+    command: "npm start"
+    restart: always
+    ports:
+      - 3000:3000
+    links:
+      - csml-mongo
+    depends_on:
+      - csml-mongo
+    environment:
+      MONGODB_HOST: csml-mongo
+      MONGODB_PORT: '27017'
+      MONGODB_NAME: csml
+      MONGODB_USERNAME: root
+      MONGODB_PASSWORD: root
+      ENCRYPTION_SECRET: some-random-string
+      DISABLE_SSL_VERIFY: 'false'
+      DEBUG: 'false'
+
+  csml-mongo:
+    image: mongo
+    container_name: csml-mongo
+    restart: always
+    ports:
+      - '27017-27019:27017-27019'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: csml
+    volumes:
+      - ./data:/data/db
+
+volumes:
+  mongo_data:

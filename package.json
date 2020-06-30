@@ -1,0 +1,31 @@
+{
+  "name": "csml-engine-server",
+  "version": "0.0.16",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSML-by-Clevy/csml-engine-server.git"
+  },
+  "author": "Clevy <contact@clevy.io>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/CSML-by-Clevy/csml-engine-server/issues"
+  },
+  "homepage": "https://github.com/CSML-by-Clevy/csml-engine-server#readme",
+  "description": "Simple HTTP server implementation of a CSML Engine",
+  "keywords": [
+    "CSML",
+    "chatbots"
+  ],
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.9",
+    "morgan": "^1.10.0",
+    "serve-favicon": "^2.5.0"
+  }
+}
