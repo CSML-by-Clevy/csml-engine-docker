@@ -12,15 +12,11 @@ services:
       - csml-mongo
     depends_on:
       - csml-mongo
+    env_file:
+      - .env
     environment:
       MONGODB_HOST: csml-mongo
-      MONGODB_PORT: '27017'
-      MONGODB_NAME: csml
-      MONGODB_USERNAME: root
-      MONGODB_PASSWORD: root
-      ENCRYPTION_SECRET: some-random-string
-      DISABLE_SSL_VERIFY: 'false'
-      DEBUG: 'false'
+      MONGODB_PORT: 27017
 
   csml-mongo:
     image: mongo
