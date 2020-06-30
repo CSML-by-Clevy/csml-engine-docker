@@ -4,7 +4,6 @@ const morgan = require('morgan');
 const express = require('express');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
-const { MongoClient } = require('mongodb');
 
 const csml = require('../native');
 const package = require('../package.json');
