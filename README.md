@@ -27,6 +27,42 @@ Tweak the docker-compose.yml file to your liking. You can use a different MongoD
 Verify that CSML Engine is running by calling http://localhost:3000.
 
 ### Handle incoming events
+```shell
+curl -X "POST" "http://localhost:3000/run" \
+     -H 'content-type: application/json' \
+     -d $'{
+  "bot": {
+    "default_flow": "Default",
+    "id": "mybot",
+    "flows": [
+      {
+        "id": "e0a13373-2037-4590-8018-ab14e74b27a1",
+        "content": "start:\\n\\tsay \\"Hello\\"\\n\\tgoto end",
+        "commands": [
+          "/default"
+        ],
+        "name": "Default",
+        "description": "Default custom flow"
+      }
+    ],
+    "updated_at": "2020-05-28T17:57:20.725Z",
+    "name": "MySuperBot"
+  },
+  "event": {
+    "request_id": "d7077041-c81a-4872-820c-dc23e015aa84",
+    "client": {
+      "user_id": "myuser",
+      "channel_id": "mychan",
+      "bot_id": "mybot"
+    },
+    "metadata": {
+      "some": "info",
+      "about": "the current user"
+    }
+  }
+}'
+```
+> Note: if `body.event.callback_url` is set, any message issued by the bot will be sent in real-time to this endpoint as a `POST` HTTP request.
 
 ### Get open conversation
 ```shell
