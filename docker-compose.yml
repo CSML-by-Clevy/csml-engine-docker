@@ -2,8 +2,8 @@ version: '3.4'
 
 services:
   csml-engine:
-    image: clevy/csml-server
-    container_name: csml-server
+    image: clevy/csml-engine
+    container_name: csml-engine
     command: "npm start"
     restart: always
     ports:

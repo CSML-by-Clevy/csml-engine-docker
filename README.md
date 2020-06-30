@@ -9,7 +9,7 @@ Run [CSML Conversational Engine](https://csml.dev) on premise!
 The easiest way to start a CSML Engine Server is by using our pre-built docker container. To do that, make sure that you have a mongodb database ready and that you have correctly setup a `.env` file accordingly (see `.env.example` for reference).
 
 ```
-docker run -p 3000:3000 --env-file .env clevy/csml-server
+docker run -p 3000:3000 --env-file .env clevy/csml-engine
 ```
 
 ### Docker-compose
