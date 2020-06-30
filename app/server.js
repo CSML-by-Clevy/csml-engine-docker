@@ -6,9 +6,8 @@ const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
 
-const csml = require('./native');
-const package = require('./package.json');
-
+const csml = require('../native');
+const package = require('../package.json');
 const app = express();
 
 app.use(morgan('tiny'));
@@ -23,20 +22,6 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
  */
 app.get('/', (req, res) => {
   return res.send(`Running CSML Server v${package.version}`);
-})
-
-app.get('/mongodb', async (req, res) => {
-  try {
-    const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/test?retryWrites=true&w=majority`;
-    const client = new MongoClient(uri);
-    await client.connect();
-    const dbs = await listDatabases(client);
-    console.log(dbs);
-    return res.json('OK');
-  }
-  catch (err) {
-    return res.json('KO');
-  }
 })
 
 /**

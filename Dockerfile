@@ -15,25 +15,24 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${RUST_VERS
     cargo --version; \
     rustc --version;
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/build
 
 COPY csml csml
-COPY package*.json ./
 
 RUN npm i -g neon-cli
 RUN neon build -p csml/bindings/node --release
 
-FROM node:12 as run
+FROM node:12 as app
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src
 
-RUN mkdir -p ./native
-COPY --from=0 /usr/src/app/csml/bindings/node/native/index.node ./native/index.node
+RUN mkdir -p native
+COPY --from=0 /usr/src/build/csml/bindings/node/native/index.node native/index.node
 
 COPY package*.json ./
 RUN npm install
 
-COPY . .
+COPY app app
 
 EXPOSE 3000
 CMD ["npm", "start"]

@@ -1,9 +1,9 @@
 {
   "name": "csml-engine-server",
   "version": "0.0.16",
-  "main": "server.js",
+  "main": "app/server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app/server.js"
   },
   "repository": {
     "type": "git",
