@@ -49,10 +49,10 @@ app.post('/bots/validate', (req, res) => {
 });
 
 /**
- * Retrieve all the steps present in a given flow
+ * Retrieve all the steps present in each flow of a given bot
  */
-app.post('/get_flow_steps', (req, res) => {
-  const data = csml.getFlowSteps(req.body.content);
+app.post('/get_bot_steps', (req, res) => {
+  const data = csml.getBotSteps(req.body);
   return res.json(data);
 });
 
