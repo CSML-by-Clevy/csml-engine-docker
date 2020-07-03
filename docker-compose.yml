@@ -14,9 +14,6 @@ services:
       - csml-mongo
     env_file:
       - .env
-    environment:
-      MONGODB_HOST: csml-mongo
-      MONGODB_PORT: 27017
 
   csml-mongo:
     image: mongo
