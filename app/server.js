@@ -61,6 +61,7 @@ app.post('/get_bot_steps', (req, res) => {
  */
 app.post('/conversations/open', (req, res) => {
   const data = csml.getOpenConversation(req.body);
+  if (!data) return res.send();
   return res.json(data);
 });
 
