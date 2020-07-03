@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Docker login
+      run: echo '${{ secrets.DOCKERHUB_PASSWORD }}' | docker login --username csmlengineci --password-stdin
+
+    - name: Build the image
+      run: |
+        docker build . --file Dockerfile --tag clevy/csml-engine
+
+    - name: Publish the image
+      run: |
+        docker tag clevy/csml-engine clevy/csml-engine:${GITHUB_REF}
+        docker push clevy/csml-engine:${GITHUB_REF}
+        docker push clevy/csml-engine
