@@ -68,8 +68,8 @@ app.post('/conversations/open', (req, res) => {
  * Close all open conversations of a given client
  */
 app.post('/conversations/close', (req, res) => {
-  const data = csml.closeAllConversations(req.body);
-  return res.json(data);
+  const success = csml.closeAllConversations(req.body);
+  return res.json({ success });
 });
 
 // eslint-disable-next-line no-unused-vars
