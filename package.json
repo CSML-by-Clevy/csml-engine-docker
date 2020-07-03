@@ -3,6 +3,8 @@
   "version": "0.0.16",
   "main": "app/server.js",
   "scripts": {
+    "build": "neon build -p csml/bindings/node --release",
+    "setup": "mkdir -p native && cp csml/bindings/node/native/index.node native/",
     "lint": "eslint app",
     "start": "node app/server.js"
   },
