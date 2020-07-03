@@ -12,7 +12,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
+
     - name: Docker login
       run: echo '${{ secrets.DOCKERHUB_PASSWORD }}' | docker login --username csmlengineci --password-stdin
 
