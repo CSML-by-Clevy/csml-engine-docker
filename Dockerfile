@@ -31,7 +31,7 @@ RUN mkdir -p native
 COPY --from=0 /usr/src/build/native/index.node ./native
 
 COPY package*.json ./
-RUN npm install
+RUN npm install --production
 
 COPY app app
 
