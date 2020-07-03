@@ -21,13 +21,14 @@ COPY csml csml
 
 RUN npm i -g neon-cli
 RUN neon build -p csml/bindings/node --release
+RUN mv csml/bindings/node/native ./
 
 FROM node:12 as app
 
 WORKDIR /usr/src
 
 RUN mkdir -p native
-COPY --from=0 /usr/src/build/csml/bindings/node/native/index.node native/index.node
+COPY --from=0 /usr/src/build/native/index.node ./native
 
 COPY package*.json ./
 RUN npm install
