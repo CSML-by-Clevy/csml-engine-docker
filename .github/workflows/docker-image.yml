@@ -1,8 +1,8 @@
 name: Docker Image CI
 
 on:
-  release:
-    types: [published]
+  tags:
+    - v*
 
 jobs:
 
@@ -25,6 +25,7 @@ jobs:
 
     - name: Publish the image
       run: |
-        docker tag clevy/csml-engine clevy/csml-engine:${GITHUB_REF}
-        docker push clevy/csml-engine:${GITHUB_REF}
         docker push clevy/csml-engine
+
+    - name: Create a Release
+      uses: actions/create-release@v1
