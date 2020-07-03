@@ -26,7 +26,10 @@ Tweak the docker-compose.yml file to your liking. You can use a different MongoD
 
 Verify that CSML Engine is running by calling http://localhost:3000.
 
-### Handle incoming events
+### POST /run
+
+Handle incoming events
+
 ```shell
 curl -X "POST" "http://localhost:3000/run" \
      -H 'content-type: application/json' \
@@ -55,6 +58,12 @@ curl -X "POST" "http://localhost:3000/run" \
       "channel_id": "mychan",
       "bot_id": "mybot"
     },
+    "payload": {
+      "content_type": "text",
+      "content": {
+        "text": "Hi there"
+      }
+    },
     "metadata": {
       "some": "info",
       "about": "the current user"
@@ -64,7 +73,10 @@ curl -X "POST" "http://localhost:3000/run" \
 ```
 > Note: if `body.event.callback_url` is set, any message issued by the bot will be sent in real-time to this endpoint as a `POST` HTTP request.
 
-### Get open conversation
+### POST /conversations/open
+
+Retrieve the given client's last open conversation
+
 ```shell
 curl -X "POST" "http://localhost:3000/conversations/open" \
      -H 'content-type: application/json' \
@@ -75,7 +87,10 @@ curl -X "POST" "http://localhost:3000/conversations/open" \
 }'
 ```
 
-### Close all open conversations
+### POST /conversations/close
+
+Close all open conversations of the given client
+
 ```shell
 curl -X "POST" "http://localhost:3000/conversations/close" \
      -H 'content-type: application/json' \
@@ -86,7 +101,10 @@ curl -X "POST" "http://localhost:3000/conversations/close" \
 }'
 ```
 
-### Validate Bot
+### POST /bots/validate
+
+Verify that the given bot contains valid CSML
+
 ```shell
 curl -X "POST" "http://localhost:3000/bots/validate" \
      -H 'content-type: application/json' \
@@ -107,9 +125,12 @@ curl -X "POST" "http://localhost:3000/bots/validate" \
 }'
 ```
 
-### Get Flow Steps
+### POST /get_bot_steps
+
+Retrieve all the steps in each flow from a given bot
+
 ```shell
-curl -X "POST" "http://localhost:3000/get_flow_steps" \
+curl -X "POST" "http://localhost:3000/get_bot_steps" \
      -H 'content-type: application/json' \
      -d $'{
   "id": "myflow",
