@@ -1,9 +1,8 @@
 name: Docker Image CI
 
 on:
-  push:
-    tags:
-      - v*
+  release:
+    types: [published, created, edited]
 
 jobs:
 
@@ -13,6 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Get RELEASE_VERSION
+      run: |
+        echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
+        echo "preparing release version $RELEASE_VERSION"
 
     - name: Checkout submodules
       run: git submodule update --init --recursive
@@ -26,7 +30,6 @@ jobs:
 
     - name: Publish the image
       run: |
+        docker tag clevy/csml-engine clevy/csml-engine:$RELEASE_VERSION
         docker push clevy/csml-engine
-
-    - name: Create a Release
-      uses: actions/create-release@v1
+        docker push clevy/csml-engine:$RELEASE_VERSION
