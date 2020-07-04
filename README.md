@@ -1,6 +1,6 @@
 # CSML Engine Server
 
-![](https://github.com/csml-by-clevy/csml-engine-docker/workflows/.github/workflows/docker-image.yml/badge.svg?event=release)
+![](https://github.com/CSML-by-Clevy/csml-engine-docker/workflows/Create%20Docker%20Image/badge.svg)
 
 Run [CSML Conversational Engine](https://csml.dev) on premise!
 
