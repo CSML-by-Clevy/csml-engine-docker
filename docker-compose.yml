@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   csml-engine:
-    image: clevy/csml-engine
+    image: clevy/csml-engine:v1.0.0
     container_name: csml-engine
     command: "npm start"
     restart: always

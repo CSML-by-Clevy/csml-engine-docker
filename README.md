@@ -6,7 +6,7 @@ Run [CSML Conversational Engine](https://csml.dev) on premise!
 
 ### Docker
 
-The easiest way to start a CSML Engine Server is by using our pre-built docker container. To do that, make sure that you have a mongodb database ready and that you have correctly setup a `.env` file accordingly (see `.env.example` for reference).
+The easiest way to start a CSML Engine Server is by using our pre-built docker container. To do that, make sure that you have a mongodb database ready and that you have correctly setup a `.env` file accordingly (see [`.env.example`](https://github.com/CSML-by-Clevy/csml-engine-docker/blob/master/.env.example) for reference).
 
 ```
 docker run -p 3000:3000 --env-file .env clevy/csml-engine
@@ -14,13 +14,13 @@ docker run -p 3000:3000 --env-file .env clevy/csml-engine
 
 ### Docker-compose
 
-If you also need to start a MongoDB server, you can also use our docker-compose.yml configuration by running:
+If you also need to start a MongoDB server, you can also use our [docker-compose.yml](https://github.com/CSML-by-Clevy/csml-engine-docker/blob/master/docker-compose.yml) configuration by running:
 
 ```
 docker-compose up -d
 ```
 
-Tweak the docker-compose.yml file to your liking. You can use a different MongoDB instance by setting the right environment variables (cf `.env.example`).
+Tweak the docker-compose.yml file to your liking. You can use a different MongoDB instance by setting the right environment variables (cf [`.env.example`](https://github.com/CSML-by-Clevy/csml-engine-docker/blob/master/.env.example)).
 
 ## Usage
 
