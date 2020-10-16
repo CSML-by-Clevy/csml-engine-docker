@@ -1,5 +1,9 @@
 # CSML Engine Server
 
+⚠️ **This repository has been replaced by the main CSML Engine repository, that also handles publish to Docker Hub. Please head over to https://github.com/CSML-by-Clevy/csml-engine for the latest version of CSML Engine on Docker!** ⚠️ 
+
+----
+
 ![](https://github.com/CSML-by-Clevy/csml-engine-docker/workflows/Create%20Docker%20Image/badge.svg)
 
 Run [CSML Conversational Engine](https://csml.dev) on premise!
